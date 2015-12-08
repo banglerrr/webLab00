@@ -10,17 +10,16 @@ document.observe("dom:loaded", function() {
 	var imgarray = $$("#labs img");
 
 	for(var i = 0; i<imgarray.length; i++){
-		new Draggable(imgarray[i], {revert : true});
+		new Draggable(imgarray[i], {revert: true});
 	}
 
-	var selectedimg = $$("#selectpad>img");
-	for(i = 0; i<selectedimg.length; i++){
+	var selectedimg = $$("#selectpad > img");
+	for(var i = 0; i<selectedimg.length; i++){
 		new Draggable(selectedimg[i], {revert: true});
 	}
 	Droppables.add("selectpad", {onDrop: labSelect});
 	Droppables.add("labs", {onDrop: labSelect});
-	
-	
+
 });
 
 function labSelect(drag, drop, event) {
@@ -46,7 +45,7 @@ function labSelect(drag, drop, event) {
 	else if((drop.id == "labs") && (drag.parentNode.id == "selectpad")){
 		$("selectpad").removeChild(drag);
 		$("labs").appendChild(drag);
-		
+
 		var removedlist = drag.getAttribute("alt");
 		for(var i = 0; i<$$("#selection>li").length; i++){
 			if(removedlist == $$("#selection>li")[i].innerHTML){
