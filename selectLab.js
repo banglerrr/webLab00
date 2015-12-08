@@ -8,6 +8,9 @@ document.observe("dom:loaded", function() {
 	 */
 	
 	var imgarray = $$("#labs img");
+	
+	Droppables.add("selectpad", {onDrop: labSelect});
+	Droppables.add("labs", {onDrop: labSelect});
 
 	for(var i = 0; i<imgarray.length; i++){
 		new Draggable(imgarray[i], {revert: true});
@@ -17,8 +20,6 @@ document.observe("dom:loaded", function() {
 	for(var i = 0; i<selectedimg.length; i++){
 		new Draggable(selectedimg[i], {revert: true});
 	}
-	Droppables.add("selectpad", {onDrop: labSelect});
-	Droppables.add("labs", {onDrop: labSelect});
 
 });
 
